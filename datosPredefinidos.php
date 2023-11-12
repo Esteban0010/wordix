@@ -25,4 +25,24 @@ function cargarPartidasPredefinidas()
     return ($partidasPredefinidas);
 }
 
+/*******************************************************/
 
+/**
+ * Obtiene una colección de palabras
+ * @return array
+ */
+function cargarColeccionPalabras()
+{
+    $coleccionPalabras = [
+        "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
+        "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
+        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS", 
+        "HELIO", "RIÑON", "HOJAS", "LIMÓN", "PICOS", 
+        "NUBLA", "MANGO", "PUNTO", "BUCEO", "ROBOT", 
+        "GENTE", "DULCE", "CIELO", "NIEVE", "MENTE",
+    ];
+
+    return ($coleccionPalabras);
+}
+
+/*******************************************************/

@@ -15,22 +15,6 @@ include_once("wordix.php");
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
-/**
- * Obtiene una colección de palabras
- * @return array
- */
-function cargarColeccionPalabras()
-{
-    $coleccionPalabras = [
-        "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
-        "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
-        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS"
-        /* Agregar 5 palabras más */
-    ];
-
-    return ($coleccionPalabras);
-}
-
 /* ****COMPLETAR***** */
 
 
@@ -60,7 +44,16 @@ do {
     
     switch ($opcion) {
         case 1: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
+            $cantPalabrasWordix=count($coleccionPalabras);
+
+            echo "Ingrese el número de la palabra con la que desea jugar: ";
+            $numero=solicitarNumeroEntre(1, $cantPalabrasWordix) ;
+            $indiceElegido=$numero-1 ;
+            // FALTA VERIFICAR SI EL USUARIO YA USO RL NUMERO DE LA PALABRA
+            $palabraElegida=$coleccionPalabras[$indiceElegido]  ;
+
+            jugarWordix($palabraElegida, $nombreUsuario) ;
+            $coleccionPartidas=array($partida) ;
 
             break;
         case 2: 

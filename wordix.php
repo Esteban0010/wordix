@@ -27,7 +27,9 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**************************************/
 
 /**
- *  ****COMPLETAR*****
+ * retorna un número válido dentro de un rango de valores
+ * @param int
+ * @return int
  */
 function solicitarNumeroEntre($min, $max)
 {
@@ -328,13 +330,53 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * calcula el puntaje de una partida wordix
+ * @param string
+ * @param int
+ * @return int
  */
-function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($palabraWordix, $nroIntento)
 {
+    //$puntaje int
 
-    /* ****COMPLETAR***** cuerpo de la función*/
-    return 0;
+   switch ($nroIntento) 
+   {
+         case 1:
+            $puntaje=6 ;
+            break;
+         case 2:
+            $puntaje=5 ;
+            break;
+         case 3:
+            $puntaje=4 ;
+            break;
+         case 4:
+            $puntaje=3 ;
+            break;
+         case 5:
+            $puntaje=2 ;
+            break;
+         case 6: 
+            $puntaje=1 ;
+            break;
+   }
+
+   for ($i=0;  $i<strlen($palabraWordix);  $i++) 
+   {
+        $letra=$palabraWordix[$i] ;
+        if ( !($letra=="A" || $letra=="E" || $letra=="I")  &&  ($letra<="M") ) 
+        {
+            $puntaje=$puntaje+2 ;
+        } 
+        elseif ( !($letra=="O" || $letra=="U") && $letra>="N") 
+        {
+            $puntaje=$puntaje+3 ;
+        } else {
+            $puntaje=$puntaje+1 ;
+        }
+   }
+    
+   return $puntaje;
 }
 
 /**
@@ -369,7 +411,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     if ($ganoElIntento) {
         $nroIntento--;
-        $puntaje = obtenerPuntajeWordix();
+        $puntaje = obtenerPuntajeWordix($palabraWordix, $nroIntento);
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
     } else {
         $nroIntento = 0; //reset intento
