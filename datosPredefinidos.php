@@ -5,8 +5,8 @@ function cargarPartidasPredefinidas()
     $partidasPredefinidas = array(
         array("palabraWordix"=> "QUESO" , "jugador" => "majo", "intentos"=> 0, "puntaje" => 0),
         array("palabraWordix"=> "PIANO" , "jugador" => "guadalupe", "intentos"=> 3, "puntaje" => 4),
-        array("palabraWordix"=> "PULSO" , "jugador" => "esteban", "intentos"=> 5, "puntaje" => 1),
-        array("palabraWordix"=> "PULSO" , "jugador" => "eeteban", "intentos"=> 5, "puntaje" => 1),
+        array("palabraWordix"=> "MUJER" , "jugador" => "esteban", "intentos"=> 5, "puntaje" => 1),
+        array("palabraWordix"=> "QUESO" , "jugador" => "esteban", "intentos"=> 5, "puntaje" => 1),
         array("palabraWordix"=> "VERDE" , "jugador" => "leonardo", "intentos"=> 6, "puntaje" => 10),
         array("palabraWordix"=> "GATOS" , "jugador" => "leonardo", "intentos"=> 0, "puntaje" => 0),
         array("palabraWordix"=> "CELDA" , "jugador" => "pablo", "intentos"=> 3, "puntaje" => 6),
