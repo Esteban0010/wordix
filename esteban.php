@@ -1,5 +1,5 @@
 <?php
-/******************************************************************** */
+/******************************************************************** FUNCION 3*/
 include_once("datosPredefinidos.php");
 function msjPartida($numPartida,$palabra,$jugador,$puntaje,$intentosMsj){
     $partidaMsj =  "**************************************************************\n   Partida WORDIX $numPartida: palabra $palabra        \n   Jugador: $jugador             \n   Puntaje: $puntaje puntos      \n   Intento: $intentosMsj                           \n**************************************************************";
@@ -33,4 +33,40 @@ function buscarPartida($coleccionPartidas)
     return ($mensanjePartida);
 }
 
+/********************************************************************  FUNCION 6*/
+
+
+function comparPartidas($partida, $partidaComparacion)
+{
+    $orden = 0;
+    if (ord($partida["jugador"]) > ord($partidaComparacion["jugador"])) {
+        $orden = 1;
+    } elseif ($partida["jugador"] == $partidaComparacion["jugador"]) {
+
+        if ($partida["palabraWordix"] < $partidaComparacion["palabraWordix"]) {
+            $orden = -1;
+        } else {
+            $orden = 1;
+        }
+    } elseif (ord($partida["jugador"]) < ord($partidaComparacion["jugador"])) {
+        $orden = -1;
+    }
+    return $orden;
+}
+function ordenaalfabeticamentePalabra($coleccionPartidas)
+{
+    uasort($coleccionPartidas, "comparPartidas");
+    uasort($coleccionPartidas, "comparPartidas");
+    return ($coleccionPartidas);
+}
+
+/**
+ * Me ordena las partidas alabeticamente por nombre y palabras jugadas, luego imprime por pantalla.
+ * @param array $coleccionPartidas
+ */
+function mostrarPartidasOrdenadas($coleccionPartidas)
+{
+    $partidasOrdenadas = ordenaalfabeticamentePalabra($coleccionPartidas);
+    print_r($partidasOrdenadas);
+}
 /******************************************************************** */
