@@ -27,7 +27,9 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**************************************/
 
 /**
- *  ****COMPLETAR*****
+ * retorna un número válido dentro de un rango de valores
+ * @param int
+ * @return int
  */
 function solicitarNumeroEntre($min, $max)
 {
@@ -120,7 +122,8 @@ function escribirSegunEstado($texto, $estado)
 }
 
 /**
- * ****COMPLETAR*****
+ * Escribe un mensaje de bienvenida al usuario
+ * @param string
  */
 function escribirMensajeBienvenida($usuario)
 {
@@ -133,7 +136,8 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * Verifica que el parametro ingresado, sea una palabra compuesta de letras unicamente
+ * @return boolean
  */
 function esPalabra($cadena)
 {
@@ -149,7 +153,8 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ * Permite ingresar una palabra,y verifica que sea de 5 letras
+ * @return string
  */
 function leerPalabra5Letras()
 {
@@ -328,13 +333,50 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * calcula el puntaje de una partida wordix
+ * @param string
+ * @param int
+ * @return int
  */
-function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($palabraWordix, $nroIntento)
 {
+    //$puntaje int
 
-    /* ****COMPLETAR***** cuerpo de la función*/
-    return 0;
+   switch ($nroIntento) 
+   {
+         case 1:
+            $puntaje=6 ;
+            break;
+         case 2:
+            $puntaje=5 ;
+            break;
+         case 3:
+            $puntaje=4 ;
+            break;
+         case 4:
+            $puntaje=3 ;
+            break;
+         case 5:
+            $puntaje=2 ;
+            break;
+         case 6: 
+            $puntaje=1 ;
+            break;
+   }
+
+    foreach (str_split($palabraWordix) as $caracter) {
+        if ($caracter == "A" || $caracter == "E" || $caracter == "I" || $caracter == "O" || $caracter == "U") {
+            $puntaje = $puntaje + 1;
+        } else {
+            if ($caracter <= "M") {
+                $puntaje = $puntaje + 2;
+            } else if ($caracter > "M") {
+                $puntaje = $puntaje + 3;
+            }
+        }
+    }
+    
+   return $puntaje;
 }
 
 /**
@@ -369,7 +411,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     if ($ganoElIntento) {
         $nroIntento--;
-        $puntaje = obtenerPuntajeWordix();
+        $puntaje = obtenerPuntajeWordix($palabraWordix, $nroIntento);
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
     } else {
         $nroIntento = 0; //reset intento
