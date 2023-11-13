@@ -1,4 +1,6 @@
 <?php
+
+/*********** ARCHIVOS UTILIZADOS *******/
 include_once("wordix.php");
 include_once("datosPredefinidos.php");
 include_once("mensajes.php");
@@ -10,16 +12,10 @@ include_once("funcionesComplementarias.php");
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Apellido,  Nombre.  | Legajo. | Carrera. |   mail.                       |   Usuario Github     */
-/* Pilchuman  Esteban. |  5052   |  TUDW    | estebanpilchuman02@gmail.com  |   Esteban0010         */
-/* */
-/* ****COMPLETAR***** */
-
-
-/**************************************/
-/***** DEFINICION DE FUNCIONES ********/
-/**************************************/
-
+/* Apellido,  Nombre.   | Legajo. | Carrera. |   mail.                       |   Usuario Github     */
+/* Pilchuman  Esteban.  |  5052   |  TUDW    | estebanpilchuman02@gmail.com  |   Esteban0010        */
+/* Cid        Guadalupe |         |  TUDW    |                               |   guadacid4          */
+/* Pacheco    Leonardo  |         |  TUDW    |                               |   pachecoleoo        */
 /* ****COMPLETAR***** */
 
 
@@ -75,7 +71,6 @@ do {
             case 3: 
                 $partidaBuscada =buscarPartida($coleccionPartidas);
                 echo($partidaBuscada);
-                imprimirMsjOpciones();
                 break;
             case 4: 
                

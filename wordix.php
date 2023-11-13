@@ -122,7 +122,8 @@ function escribirSegunEstado($texto, $estado)
 }
 
 /**
- * ****COMPLETAR*****
+ * Escribe un mensaje de bienvenida al usuario
+ * @param string
  */
 function escribirMensajeBienvenida($usuario)
 {
@@ -135,7 +136,8 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * Verifica que el parametro ingresado, sea una palabra compuesta de letras unicamente
+ * @return boolean
  */
 function esPalabra($cadena)
 {
@@ -151,7 +153,8 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ * Permite ingresar una palabra,y verifica que sea de 5 letras
+ * @return string
  */
 function leerPalabra5Letras()
 {
@@ -361,20 +364,17 @@ function obtenerPuntajeWordix($palabraWordix, $nroIntento)
             break;
    }
 
-   for ($i=0;  $i<strlen($palabraWordix);  $i++) 
-   {
-        $letra=$palabraWordix[$i] ;
-        if ( !($letra=="A" || $letra=="E" || $letra=="I")  &&  ($letra<="M") ) 
-        {
-            $puntaje=$puntaje+2 ;
-        } 
-        elseif ( !($letra=="O" || $letra=="U") && $letra>="N") 
-        {
-            $puntaje=$puntaje+3 ;
+    foreach (str_split($palabraWordix) as $caracter) {
+        if ($caracter == "A" || $caracter == "E" || $caracter == "I" || $caracter == "O" || $caracter == "U") {
+            $puntaje = $puntaje + 1;
         } else {
-            $puntaje=$puntaje+1 ;
+            if ($caracter <= "M") {
+                $puntaje = $puntaje + 2;
+            } else if ($caracter > "M") {
+                $puntaje = $puntaje + 3;
+            }
         }
-   }
+    }
     
    return $puntaje;
 }

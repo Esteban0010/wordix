@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Obtiene una colección de partidas
+ * @return array
+ */
 function cargarPartidasPredefinidas()
 {
     $partidasPredefinidas = array(

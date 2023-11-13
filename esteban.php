@@ -1,10 +1,8 @@
 <?php
 /******************************************************************** FUNCION 3*/
 include_once("datosPredefinidos.php");
-function msjPartida($numPartida,$palabra,$jugador,$puntaje,$intentosMsj){
-    $partidaMsj =  "**************************************************************\n   Partida WORDIX $numPartida: palabra $palabra        \n   Jugador: $jugador             \n   Puntaje: $puntaje puntos      \n   Intento: $intentosMsj                           \n**************************************************************";
-    return $partidaMsj;
- }
+include_once("mensajes.php");
+
 
  /**
  * Busca una partida especifica al ingresar un numero, y devuelve un mensaje.
@@ -34,8 +32,12 @@ function buscarPartida($coleccionPartidas)
 }
 
 /********************************************************************  FUNCION 6*/
-
-
+/** 
+ * Compara entre sus dos parametro y retorna un numero dependiendo la condicion cumplida
+ * @param array $partida
+ * @param array $partidaComparacion
+ * @return int
+*/
 function comparPartidas($partida, $partidaComparacion)
 {
     $orden = 0;
