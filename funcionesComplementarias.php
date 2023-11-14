@@ -6,6 +6,10 @@
 *@param array $coleccionPalabras
 *@param int $indicePalabra 
 */
+include_once("programaPilchumanPachecoCid.php") ;
+include_once("datosPredefinidos.php");
+
+
 function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indicePalabra)
 {
     //boolean $palabraUsada 
@@ -197,3 +201,109 @@ function estadisticasJugador($coleccionPartidas)
     );
     return $arrayEstadisticas;
 }
+
+/*****************************OPCION 1******************************** */
+
+/**
+ * solicita al usuario el numero de la palabra con la que desea jugar y retorna la misma
+ * @return string
+ */
+function jugarWordixConPalabraElegida($coleccionPalabras, $coleccionPartidas) 
+{
+    //boolean $palabarUsada
+    //string $nombreUsuario, $palabraElegida
+    //int $cantPalabrasWordix, $cantPartidas, $numero, $indiceElegido
+
+
+    $palabraUsada = false;
+    $nombreUsuario = solicitarJugador();
+    $cantPalabrasWordix = count($coleccionPalabras);
+    $cantPartidas = count($coleccionPartidas);
+    echo "Ingrese el número de la palabra con la que desea jugar: ";
+    do {
+        $numero = solicitarNumeroEntre(1, $cantPalabrasWordix);
+        $indiceElegido = $numero - 1;
+        $palabraElegida = $coleccionPalabras[$indiceElegido];
+        $palabraUsada = verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indiceElegido);
+        if ($palabraUsada) {
+            echo "Debe ingresar un numero de palabra que no hayas utilizadao: ";
+        }
+    } while ($palabraUsada);
+
+    return ($palabraElegida) ;
+}
+
+/******************************************************************** FUNCION 3*/
+include_once("datosPredefinidos.php");
+include_once("mensajes.php");
+include_once("funcionesComplementarias.php");
+
+
+ /**
+ * Busca una partida especifica al ingresar un numero, y devuelve un mensaje.
+ * @param array $coleccionPartidas
+ * @return string
+ */
+function buscarPartida($coleccionPartidas)
+{
+    $cantidadPartidas = count($coleccionPartidas);
+    $intentosMsj = "";
+    echo ("Ingre el numero de partida que desea Buscar: ");
+    $numPartida = solicitarNumeroEntre(1, $cantidadPartidas);
+    
+    $partidaBuscada = $coleccionPartidas[$numPartida - 1];
+    $palabra = $partidaBuscada["palabraWordix"];
+    $jugador = $partidaBuscada["jugador"];
+    $puntaje = $partidaBuscada["puntaje"];
+    $intentos = $partidaBuscada["intentos"];
+
+    if ($intentos == 0) {
+        $intentosMsj = "No adivino la palabra";
+    } else {
+        $intentosMsj = "Adivino la palabra en $intentos intentos";
+    }
+    $mensanjePartida = msjPartida($numPartida, $palabra, $jugador, $puntaje, $intentosMsj);
+    return ($mensanjePartida);
+}
+
+/********************************************************************  FUNCION 6*/
+/** 
+ * Compara entre sus dos parametro y retorna un numero dependiendo la condicion cumplida
+ * @param array $partida
+ * @param array $partidaComparacion
+ * @return int
+*/
+function comparPartidas($partida, $partidaComparacion)
+{
+    $orden = 0;
+    if (ord($partida["jugador"]) > ord($partidaComparacion["jugador"])) {
+        $orden = 1;
+    } elseif ($partida["jugador"] == $partidaComparacion["jugador"]) {
+
+        if ($partida["palabraWordix"] < $partidaComparacion["palabraWordix"]) {
+            $orden = -1;
+        } else {
+            $orden = 1;
+        }
+    } elseif (ord($partida["jugador"]) < ord($partidaComparacion["jugador"])) {
+        $orden = -1;
+    }
+    return $orden;
+}
+function ordenaalfabeticamentePalabra($coleccionPartidas)
+{
+    uasort($coleccionPartidas, "comparPartidas");
+    uasort($coleccionPartidas, "comparPartidas");
+    return ($coleccionPartidas);
+}
+
+/**
+ * Me ordena las partidas alabeticamente por nombre y palabras jugadas, luego imprime por pantalla.
+ * @param array $coleccionPartidas
+ */
+function mostrarPartidasOrdenadas($coleccionPartidas)
+{
+    $partidasOrdenadas = ordenaalfabeticamentePalabra($coleccionPartidas);
+    print_r($partidasOrdenadas);
+}
+/******************************************************************** Funcion Optcio 4*/
