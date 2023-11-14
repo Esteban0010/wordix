@@ -14,7 +14,12 @@ function msjPartida($numPartida,$palabra,$jugador,$puntaje,$intentosMsj){
    return $partidaMsj;
 }
 
-function msjPrimeraGanada($numPartida,$palabra,$jugador,$puntaje,$intentosMsj){
+function msjPrimeraGanada($indicePartida,$partida){
+    $numPartida =$indicePartida;
+    $palabra = $partida["palabraWordix"];
+    $jugador =$partida["jugador"];
+    $puntaje=$partida["puntaje"];
+    $intentosMsj=$partida["intentos"];
     $msj = "**************************************************************\n   Partida WORDIX $numPartida: palabra $palabra        \n   Jugador: $jugador             \n   Puntaje: $puntaje puntos      \n   Intento: $intentosMsj                           \n**************************************************************";
     return $msj;
 }

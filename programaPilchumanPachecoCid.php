@@ -66,10 +66,8 @@ do {
             break;
         case 3:
 
-            echo "Ingrese el número de partida que desea ver: " ;
-            $numPartida = trim(fgets(STDIN)) ;
-            $numPartida = $numPartida - 1 ;  //convierte el numero en un indice del array $coleccionPartidas 
-            mostrarPartida($numPartida, $coleccionPartidas) ;
+            
+            mostrarPartida($coleccionPartidas) ;
             
             break;
         case 4:

@@ -31,17 +31,20 @@ function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPal
 
 /**
  * muestra los datos de una partida jugada 
- * @param int
  * @param array
  */
-function mostrarPartida($indicePartida, $coleccionPartidas) /*antes de invocar la funcion asegurarse que el numero elegido 
+function mostrarPartida($coleccionPartidas) /*antes de invocar la funcion asegurarse que el numero elegido 
 por el usuario (ej: partida n°6) coincida con el número de indice 
 de la palabra (ej: $indicePartida=5)*/
 {
     //int $auxiliarIndicePartida, $puntaje
     //string $msjIntento
+    $cantidadPartidas = count($coleccionPartidas);
+    echo "Ingrese el número de partida que desea ver: " ;
+    $indicePartida = solicitarNumeroEntre(1, $cantidadPartidas) ;
 
-    $auxiliarIndicePartida = $indicePartida + 1;
+    $auxiliarIndicePartida = $indicePartida ;
+    $indicePartida = $indicePartida -1;
     $puntaje = $coleccionPartidas[$indicePartida]["puntaje"];
 
     if ($puntaje == 0) {
@@ -311,3 +314,20 @@ function mostrarPartidasOrdenadas($coleccionPartidas)
 }
 
 /************************************************************************************ */
+function solicitarJugador(){
+    /*Inicialización*/
+    echo "Ingrese por favor su nombre: \n";
+   
+                
+    do {
+        $nombreUsuario = trim(fgets(STDIN));
+            // Verificar si el nombre tiene solo letras
+           $primeraLetra = $nombreUsuario[0];
+                if (!ctype_alpha($primeraLetra)){
+                echo "Su nombre debe comenzar con una letra, ingrese un nombre valido: \n";
+            }
+        } 
+    while ( !ctype_alpha($primeraLetra));
+    $nombreUsuario = strtolower($nombreUsuario);
+   return $nombreUsuario;
+}
