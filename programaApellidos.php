@@ -5,6 +5,7 @@ include_once("wordix.php");
 include_once("datosPredefinidos.php");
 include_once("mensajes.php");
 include_once("funcionesComplementarias.php");
+include_once("esteban.php");
 
 
 
@@ -36,8 +37,6 @@ $coleccionPartidas = cargarPartidasPredefinidas();
 
 
 //Proceso:
-
-
 
 
 do {
@@ -72,12 +71,14 @@ do {
             } while ($palabraUsada);
 
             $partida = jugarWordix($palabraElegida, $nombreUsuario);
-            $coleccionPartidas = array($partida);
+            $coleccionPartidas[]= $partida;
             break;
 
         case 2:
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
-
+            echo "Ingrese por favor su nombre:";
+            $nombreUsuario = trim(fgets(STDIN));
+            $partida = jugarConPalabraAleatoria($coleccionPalabras,$coleccionPartidas,$nombreUsuario);
+            $coleccionPartidas[] = $partida;
             break;
 
         case 3:
@@ -100,7 +101,8 @@ do {
             break;
 
         case 5:
-
+             $estadisticas = estadisticasJugador($coleccionPartidas);
+            msjEstadisticasJugador($estadisticas);
             break;
 
         case 6:
@@ -110,8 +112,7 @@ do {
 
         case 7:
             $palabra = leerPalabra5Letras();
-            $coleccionPalabras[] = $palabra;
-            echo ("Su palabra ah sido agregada");
+            $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
             break;
 
         case 8:
