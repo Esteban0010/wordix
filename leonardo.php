@@ -2,7 +2,7 @@
 
 /**
  * Obtiene una colección de palabras
- * 
+ * @return array
  */
 function cargarColeccionPalabras()
 {
