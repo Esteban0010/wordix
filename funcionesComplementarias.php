@@ -1,4 +1,9 @@
 <?php
+include_once("programaPilchumanPachecoCid.php") ;
+include_once("datosPredefinidos.php");
+
+/*************************************************************************** */
+
 /**
 * verifica si la palabra ya fue utilizada
 *@param string $nombreUsario 
@@ -6,10 +11,6 @@
 *@param array $coleccionPalabras
 *@param int $indicePalabra 
 */
-include_once("programaPilchumanPachecoCid.php") ;
-include_once("datosPredefinidos.php");
-
-
 function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indicePalabra)
 {
     //boolean $palabraUsada 
@@ -26,13 +27,12 @@ function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPal
     return $palabraUsada;
 }
 
-/************************************************************** */
+/****************************************************************************** */
 
 /**
  * muestra los datos de una partida jugada 
  * @param int
  * @param array
- * 
  */
 function mostrarPartida($indicePartida, $coleccionPartidas) /*antes de invocar la funcion asegurarse que el numero elegido 
 por el usuario (ej: partida n°6) coincida con el número de indice 
@@ -58,8 +58,7 @@ de la palabra (ej: $indicePartida=5)*/
     echo "******************************************\n";
 }
 
-/************************************************************** */
-
+/******************************************************************************* */
 
 /**
  * Me permite jugar Wordix, con un palabra al azar
@@ -81,15 +80,13 @@ function jugarConPalabraAleatoria($coleccionPalabras, $coleccionPartidas, $nombr
 }
 
 /************************** Funcion NUMERO 8************************************ */
+
 /**
  * Busca la primera partida ganada de un usuario, y devuelve un mensaje.
  * @param array $partidasPredefinidas
  * @param string
  * @return int
  */
-// Una función que dada una colección de partidas y el nombre de un jugador, retorne el índice de la primer
-// partida ganada por dicho jugador. Si el jugador ganó ninguna partida, la función debe retornar el valor -1.
-// (debe utilizar las instrucciones vistas en la materia, no utilizar funciones predefinidas de php)
 function primeraPartidaGanada($partidasPredefinidas, $nombreUsuario)
 {
     $indice = 0;
@@ -103,10 +100,10 @@ function primeraPartidaGanada($partidasPredefinidas, $nombreUsuario)
 
 }
 
+/************************************************************************************ */
 
-
-/************************************************************** */
 /**
+ * agrega una palabra (elemento) a un array
  * @param array $coleccionPalabras
  * @param string $palabra 
  */
@@ -116,7 +113,7 @@ function agregarPalabra($coleccionPalabras, $palabra)
     return $coleccionPalabras;
 }
 
-/************************************************************** */
+/************************************************************************************ */
 
 /**
  * Me permite obtener las estadisticas generales de un jugador.
@@ -127,7 +124,7 @@ function estadisticasJugador($coleccionPartidas)
 {
     // int $contadorPartidas, $acumuladorPuntaje, $contadorVictorias, $porcentajeVictorias, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6
     // string $jugador 
-    //boolean $jugadorEncontrado
+    // boolean $jugadorEncontrado
     // array $arrayEstadisticas 
     $contadorPartidas = 0;
     $acumuladorPuntaje = 0;
@@ -155,7 +152,7 @@ function estadisticasJugador($coleccionPartidas)
                 if ($partida["puntaje"] > 0) {
                     $contadorVictorias = $contadorVictorias + 1;
                 }
-                ;
+                
                 switch ($intento) {
                     case 1:
                         $intento1 = $intento1 + 1;
@@ -179,7 +176,6 @@ function estadisticasJugador($coleccionPartidas)
 
                 }
             }
-            ;
         }
 
         if (!$jugadorEncontrado) {
@@ -202,10 +198,11 @@ function estadisticasJugador($coleccionPartidas)
     return $arrayEstadisticas;
 }
 
-/*****************************OPCION 1******************************** */
+/*********************************************************************************** */
 
 /**
  * solicita al usuario el numero de la palabra con la que desea jugar y retorna la misma
+ * @param array
  * @return string
  */
 function jugarWordixConPalabraElegida($coleccionPalabras, $coleccionPartidas) 
@@ -213,7 +210,6 @@ function jugarWordixConPalabraElegida($coleccionPalabras, $coleccionPartidas)
     //boolean $palabarUsada
     //string $nombreUsuario, $palabraElegida
     //int $cantPalabrasWordix, $cantPartidas, $numero, $indiceElegido
-
 
     $palabraUsada = false;
     $nombreUsuario = solicitarJugador();
@@ -233,17 +229,13 @@ function jugarWordixConPalabraElegida($coleccionPalabras, $coleccionPartidas)
     return ($palabraElegida) ;
 }
 
-/******************************************************************** FUNCION 3*/
-include_once("datosPredefinidos.php");
-include_once("mensajes.php");
-include_once("funcionesComplementarias.php");
+/******************************************************************************* FUNCION 3*/
 
-
- /**
- * Busca una partida especifica al ingresar un numero, y devuelve un mensaje.
- * @param array $coleccionPartidas
- * @return string
- */
+/**
+* Busca una partida especifica al ingresar un numero, y devuelve un mensaje.
+* @param array $coleccionPartidas
+* @return string
+*/
 function buscarPartida($coleccionPartidas)
 {
     $cantidadPartidas = count($coleccionPartidas);
@@ -266,7 +258,8 @@ function buscarPartida($coleccionPartidas)
     return ($mensanjePartida);
 }
 
-/********************************************************************  FUNCION 6*/
+/********************************************************************************  FUNCION 6*/
+
 /** 
  * Compara entre sus dos parametro y retorna un numero dependiendo la condicion cumplida
  * @param array $partida
@@ -290,12 +283,22 @@ function comparPartidas($partida, $partidaComparacion)
     }
     return $orden;
 }
+
+/*********************************************************************************** */
+
+/**
+ * ordena alfabeticamente una parte del array
+ * @param array
+ * @return array
+ */
 function ordenaalfabeticamentePalabra($coleccionPartidas)
 {
     uasort($coleccionPartidas, "comparPartidas");
     uasort($coleccionPartidas, "comparPartidas");
     return ($coleccionPartidas);
 }
+
+/*************************************************************Funcion Optcio 4*/
 
 /**
  * Me ordena las partidas alabeticamente por nombre y palabras jugadas, luego imprime por pantalla.
@@ -306,4 +309,5 @@ function mostrarPartidasOrdenadas($coleccionPartidas)
     $partidasOrdenadas = ordenaalfabeticamentePalabra($coleccionPartidas);
     print_r($partidasOrdenadas);
 }
-/******************************************************************** Funcion Optcio 4*/
+
+/************************************************************************************ */
