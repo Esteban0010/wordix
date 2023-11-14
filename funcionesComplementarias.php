@@ -1,4 +1,7 @@
 <?php
+include_once("programaPilchumanPachecoCid.php") ;
+include_once("datosPredefinidos.php");
+
 
 function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indicePalabra)
 {
@@ -182,3 +185,35 @@ function estadisticasJugador($coleccionPartidas)
     );
     return $arrayEstadisticas;
 }
+
+/*****************************OPCION 1******************************** */
+
+/**
+ * solicita al usuario el numero de la palabra con la que desea jugar y retorna la misma
+ * @return string
+ */
+function jugarWordixConPalabraElegida($coleccionPalabras, $coleccionPartidas) 
+{
+    //boolean $palabarUsada
+    //string $nombreUsuario, $palabraElegida
+    //int $cantPalabrasWordix, $cantPartidas, $numero, $indiceElegido
+
+
+    $palabraUsada = false;
+    $nombreUsuario = solicitarJugador();
+    $cantPalabrasWordix = count($coleccionPalabras);
+    $cantPartidas = count($coleccionPartidas);
+    echo "Ingrese el número de la palabra con la que desea jugar: ";
+    do {
+        $numero = solicitarNumeroEntre(1, $cantPalabrasWordix);
+        $indiceElegido = $numero - 1;
+        $palabraElegida = $coleccionPalabras[$indiceElegido];
+        $palabraUsada = verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indiceElegido);
+        if ($palabraUsada) {
+            echo "Debe ingresar un numero de palabra que no hayas utilizadao: ";
+        }
+    } while ($palabraUsada);
+
+    return ($palabraElegida) ;
+}
+

@@ -43,7 +43,7 @@
  * Obtiene el nombre ingresado en minusculas y sin carácteres especiales
  * @return int 
  */
-function nombreMinuscula(){
+function solicitarJugador(){
     /*Inicialización*/
     echo "Ingrese por favor su nombre: \n";           
     do {

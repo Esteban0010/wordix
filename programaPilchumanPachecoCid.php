@@ -51,27 +51,15 @@ do {
     switch ($opcion) {
 
         case 1:
-            $palabraUsada = false;
-            $nombreUsuario =nombreMinuscula();
-            $cantPalabrasWordix = count($coleccionPalabras);
-            $cantPartidas = count($coleccionPartidas);
-            echo "Ingrese el número de la palabra con la que desea jugar: ";
-            do {
-                $numero = solicitarNumeroEntre(1, $cantPalabrasWordix);
-                $indiceElegido = $numero - 1;
-                $palabraElegida = $coleccionPalabras[$indiceElegido];
-                $palabraUsada = verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indiceElegido);
-                if ($palabraUsada) {
-                    echo "Debe ingresar un numero de palabra que no hayas utilizadao: ";
-                }
-            } while ($palabraUsada);
 
+            $palabraElegida=jugarWordixConPalabraElegida($coleccionPalabras ,$coleccionPartidas) ;
             $partida = jugarWordix($palabraElegida, $nombreUsuario);
             $coleccionPartidas[]= $partida;
+            
             break;
         case 2:
             echo "Ingrese por favor su nombre:";
-            $nombreUsuario =nombreMinuscula();
+            $nombreUsuario =solicitarJugador();
             $partida = jugarConPalabraAleatoria($coleccionPalabras,$coleccionPartidas,$nombreUsuario);
             $coleccionPartidas[] = $partida;
             break;
@@ -85,7 +73,7 @@ do {
 
         case 4:
 
-            //$nombreUsuario = solicitarUsuario() ;
+            //$nombreUsuario = solicitarJugador() ;
             //$indicePartida = primeraPartidaGanada($coleccionPartidas, $nombreUsuario) ;
             //$verPrimerPartidaGanada = $coleccionPalabras[$indicePartida];
             //echo ($verPrimerPartidaGanada);
@@ -93,7 +81,7 @@ do {
             break;
 
         case 5:
-            $nombreUsuario =nombreMinuscula();
+            $nombreUsuario =solicitarJugador();
             $estadisticas = estadisticasJugador($coleccionPartidas);
             msjEstadisticasJugador($estadisticas);
             break;
