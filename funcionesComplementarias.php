@@ -1,7 +1,15 @@
 <?php
-
+/**
+* verifica si la palabra ya fue utilizada
+*@param string $nombreUsario 
+*@param array $coleccionPartida 
+*@param array $coleccionPalabras
+*@param int $indicePalabra 
+*/
 function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indicePalabra)
 {
+    //boolean $palabraUsada 
+    //int $cantPartidas 
     $palabraUsada = false;
     $cantPartidas = count($coleccionPartidas);
     for ($i = 0; $i < $cantPartidas; $i++) {
@@ -94,7 +102,10 @@ function primeraPartidaGanada($partidasPredefinidas, $nombreUsuario)
 
 
 /************************************************************** */
-
+/**
+ * @param array $coleccionPalabras
+ * @param string $palabra 
+ */
 function agregarPalabra($coleccionPalabras, $palabra)
 {
     $coleccionPalabras[] = $palabra;
@@ -106,10 +117,14 @@ function agregarPalabra($coleccionPalabras, $palabra)
 /**
  * Me permite obtener las estadisticas generales de un jugador.
  * @param array $coleccionPartidas
- * @return array
+ * @return array 
  */
 function estadisticasJugador($coleccionPartidas)
 {
+    // int $contadorPartidas, $acumuladorPuntaje, $contadorVictorias, $porcentajeVictorias, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6
+    // string $jugador 
+    //boolean $jugadorEncontrado
+    // array $arrayEstadisticas 
     $contadorPartidas = 0;
     $acumuladorPuntaje = 0;
     $contadorVictorias = 0;
@@ -178,7 +193,7 @@ function estadisticasJugador($coleccionPartidas)
         "intento3" => $intento3,
         "intento4" => $intento4,
         "intento5" => $intento5,
-        "intento6" => $intento
+        "intento6" => $intento6,
     );
     return $arrayEstadisticas;
 }
