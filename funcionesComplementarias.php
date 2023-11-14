@@ -90,4 +90,13 @@ function primeraPartidaGanada($partidasPredefinidas,$nombreUsuario)
     }
     return -1;
     
+ }
+
+
+
+/************************************************************** */
+
+function agregarPalabra($coleccionPalabras,$palabra ){
+            $coleccionPalabras[]= $palabra;
+            return $coleccionPalabras;
 }

@@ -75,23 +75,3 @@ function mostrarPartidasOrdenadas($coleccionPartidas)
 /******************************************************************** Funcion Optcio 4*/
 
 
-/**
- * Busca la primera partida ganada de un usuario, y devuelve un mensaje.
- * @param array $partidasPredefinidas
- * @return int
- */
-// Una función que dada una colección de partidas y el nombre de un jugador, retorne el índice de la primer
-// partida ganada por dicho jugador. Si el jugador ganó ninguna partida, la función debe retornar el valor -1.
-// (debe utilizar las instrucciones vistas en la materia, no utilizar funciones predefinidas de php)
-function primeraPartidaGanada($partidasPredefinidas,$nombreUsuario)
-{
-    $indice = 0;
-    foreach ($partidasPredefinidas as $partida) {
-        if ( $nombreUsuario == $partida["jugador"] && $partida["puntaje"] > 0) {
-            return $indice;
-        } 
-        $indice = $indice+1;
-    }
-    return -1;
-    
-}

@@ -72,14 +72,14 @@ do {
             } while ($palabraUsada);
 
             $partida = jugarWordix($palabraElegida, $nombreUsuario);
-            $coleccionPartidas = array($partida);
+            $coleccionPartidas[]= $partida;
             break;
 
         case 2:
             echo "Ingrese por favor su nombre:";
             $nombreUsuario = trim(fgets(STDIN));
             $partida = jugarConPalabraAleatoria($coleccionPalabras,$coleccionPartidas,$nombreUsuario);
-            $coleccionPartidas = array($partida);
+            $coleccionPartidas[] = $partida;
             break;
 
         case 3:
@@ -104,8 +104,7 @@ do {
 
         case 7:
             $palabra = leerPalabra5Letras();
-            $coleccionPalabras[] = $palabra;
-            echo ("Su palabra ah sido agregada");
+            $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
             break;
 
         case 8:
