@@ -5,6 +5,7 @@ include_once("wordix.php");
 include_once("datosPredefinidos.php");
 include_once("mensajes.php");
 include_once("funcionesComplementarias.php");
+include_once("esteban.php");
 
 
 
@@ -75,8 +76,10 @@ do {
             break;
 
         case 2:
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
-
+            echo "Ingrese por favor su nombre:";
+            $nombreUsuario = trim(fgets(STDIN));
+            $partida = jugarConPalabraAleatoria($coleccionPalabras,$coleccionPartidas,$nombreUsuario);
+            $coleccionPartidas = array($partida);
             break;
 
         case 3:
@@ -84,13 +87,10 @@ do {
             echo "Ingrese el número de partida que desea ver: ";
             $numPartida = trim(fgets(STDIN));
             $numPartida = $numPartida - 1; //convierte el numero en indice del array
-            $verPartida=mostrarPartida($numPartida, $coleccionPartidas) ;
-            echo ($verPartida) ;
-            
+            mostrarPartida($numPartida, $coleccionPartidas);
             break;
 
         case 4:
-
             break;
 
         case 5:
