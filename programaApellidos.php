@@ -5,6 +5,7 @@ include_once("wordix.php");
 include_once("datosPredefinidos.php");
 include_once("mensajes.php");
 include_once("funcionesComplementarias.php");
+include_once("esteban.php");
 
 
 
@@ -14,7 +15,7 @@ include_once("funcionesComplementarias.php");
 
 /* Apellido,  Nombre.   | Legajo. | Carrera. |   mail.                       |   Usuario Github     */
 /* Pilchuman  Esteban.  |  5052   |  TUDW    | estebanpilchuman02@gmail.com  |   Esteban0010        */
-/* Cid        Guadalupe |         |  TUDW    |                               |   guadacid4          */
+/* Cid        Guadalupe |  5028   |  TUDW    | cidguada4@gmail.com           |   guadacid4          */
 /* Pacheco    Leonardo  |         |  TUDW    |                               |   pachecoleoo        */
 /* ****COMPLETAR***** */
 
@@ -25,74 +26,102 @@ include_once("funcionesComplementarias.php");
 /**************************************/
 
 //Declaración de variables:
-$finPartida = false;
+
+//  BOOLEAN $finPartida, $palabraUsada, 
+//  INT $opcion, $cantPalabrasWordix, $cantPartidas, $numero, $indiceElegido, $numPartida, $indicePartida
+//  STRING $nombreUsuario, 
+//  FLOAT 
+
 
 //Inicialización de variables:
-
-
-//Proceso:
+$finPartida = false;
 $coleccionPalabras = cargarColeccionPalabras();
 $coleccionPartidas = cargarPartidasPredefinidas();
 
 
+//Proceso:
 
 
 do {
     imprimirMsjOpciones();
-    echo("Ingrese una opcion: ");
+    echo ("Ingrese una opcion: ");
     $opcion = solicitarNumeroEntre(1, 8);
 
-    
+
     switch ($opcion) {
-        case 1: 
+
+        case 1:
             $palabraUsada = false;
-            echo ("Bienvenido, ingrese su nombre: ");
-            $nombreUsuario = trim(fgets(STDIN));
-            $cantPalabrasWordix=count($coleccionPalabras);
+
+            //$nombreUsuario=solicitarUsuario();
+
+            // echo ("Bienvenido, ingrese su nombre: ");
+            // $nombreUsuario = trim(fgets(STDIN));
+            // $nonombreMinuscula($) ;
+
+
+            $cantPalabrasWordix = count($coleccionPalabras);
             $cantPartidas = count($coleccionPartidas);
             echo "Ingrese el número de la palabra con la que desea jugar: ";
             do {
-            $numero=solicitarNumeroEntre(1, $cantPalabrasWordix) ;
-            $indiceElegido=$numero-1 ;
-            $palabraElegida=$coleccionPalabras[$indiceElegido];
-            $palabraUsada= verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indiceElegido);
-            if($palabraUsada){
-                echo "Debe ingresar un numero de palabra que no hayas utilizadao: ";
-            }
+                $numero = solicitarNumeroEntre(1, $cantPalabrasWordix);
+                $indiceElegido = $numero - 1;
+                $palabraElegida = $coleccionPalabras[$indiceElegido];
+                $palabraUsada = verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indiceElegido);
+                if ($palabraUsada) {
+                    echo "Debe ingresar un numero de palabra que no hayas utilizadao: ";
+                }
             } while ($palabraUsada);
-            
-            $partida = jugarWordix($palabraElegida, $nombreUsuario) ;
-            $coleccionPartidas=array($partida) ;
+
+            $partida = jugarWordix($palabraElegida, $nombreUsuario);
+            $coleccionPartidas[]= $partida;
             break;
-        case 2: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
+
+        case 2:
+            echo "Ingrese por favor su nombre:";
+            $nombreUsuario = trim(fgets(STDIN));
+            $partida = jugarConPalabraAleatoria($coleccionPalabras,$coleccionPartidas,$nombreUsuario);
+            $coleccionPartidas[] = $partida;
+            break;
+
+        case 3:
+
+            echo "Ingrese el número de partida que desea ver: " ;
+            $numPartida = trim(fgets(STDIN)) ;
+            $numPartida = $numPartida - 1 ;  //convierte el numero en un indice del array $coleccionPartidas 
+            mostrarPartida($numPartida, $coleccionPartidas) ;
+            
+            break;
+
+        case 4:
+
+            //$nombreUsuario = solicitarUsuario() ;
+            //$indicePartida = primeraPartidaGanada($coleccionPartidas, $nombreUsuario) ;
+            //$verPrimerPartidaGanada = $coleccionPalabras[$indicePartida];
+            //echo ($verPrimerPartidaGanada);
 
             break;
-            case 3: 
-                $partidaBuscada =buscarPartida($coleccionPartidas);
-                echo($partidaBuscada);
-                break;
-            case 4: 
-               
-                 break;
-            case 5: 
-              
-                break;
-            case 6: 
-                $partidasOrdenadas = ordenaalfabeticamentePalabra($coleccionPartidas);
-                print_r($partidasOrdenadas);
-                break;
-            case 7: 
-                $palabra = leerPalabra5Letras();
-                $coleccionPalabras[] = $palabra;
-                echo ("Su palabra ah sido agregada");
-                break;
-            case 8: 
-                $finPartida=true;
-                break;
-            default:
+
+        case 5:
+            $estadisticas = estadisticasJugador($coleccionPartidas);
+            msjEstadisticasJugador($estadisticas);
+            break;
+
+        case 6:
+            $partidasOrdenadas = ordenaalfabeticamentePalabra($coleccionPartidas);
+            print_r($partidasOrdenadas);
+            break;
+
+        case 7:
+            $palabra = leerPalabra5Letras();
+            $coleccionPalabras = agregarPalabra($coleccionPalabras, $palabra);
+            break;
+
+        case 8:
+            $finPartida = true;
+            break;
+
+        default:
             echo ("\033[91mDebe ingresar un numero de opcion valido... \033[0m");
-        
     }
 } while (!$finPartida);
-

@@ -2,6 +2,7 @@
 /******************************************************************** FUNCION 3*/
 include_once("datosPredefinidos.php");
 include_once("mensajes.php");
+include_once("funcionesComplementarias.php");
 
 
  /**
@@ -71,5 +72,6 @@ function mostrarPartidasOrdenadas($coleccionPartidas)
     $partidasOrdenadas = ordenaalfabeticamentePalabra($coleccionPartidas);
     print_r($partidasOrdenadas);
 }
-/******************************************************************** */
+/******************************************************************** Funcion Optcio 4*/
+
 
