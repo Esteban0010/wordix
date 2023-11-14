@@ -31,10 +31,11 @@ include_once("funcionesComplementarias.php");
 
 //Inicialización de variables:
 $finPartida = false;
-
-//Proceso:
 $coleccionPalabras = cargarColeccionPalabras();
 $coleccionPartidas = cargarPartidasPredefinidas();
+
+
+//Proceso:
 
 
 
@@ -81,15 +82,20 @@ do {
 
         case 3:
 
-            echo "Ingrese el número de partida que desea ver: ";
-            $numPartida = trim(fgets(STDIN));
-            $numPartida = $numPartida - 1; //convierte el numero en indice del array
-            $verPartida=mostrarPartida($numPartida, $coleccionPartidas) ;
+            echo "Ingrese el número de partida que desea ver: " ;
+            $numPartida = trim(fgets(STDIN)) ;
+            $numPartida = $numPartida - 1 ;  //convierte el numero en un indice del array $coleccionPartidas 
+            $verPartida = mostrarPartida($numPartida, $coleccionPartidas) ;
             echo ($verPartida) ;
             
             break;
 
         case 4:
+
+            //$nombreUsuario = solicitarUsuario() ;
+            //$indicePartida = primeraPartidaGanada($coleccionPartidas, $nombreUsuario) ;
+            //$verPrimerPartidaGanada = $coleccionPalabras[$indicePartida];
+            //echo ($verPrimerPartidaGanada);
 
             break;
 
