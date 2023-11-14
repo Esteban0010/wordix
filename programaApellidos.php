@@ -52,14 +52,7 @@ do {
 
         case 1:
             $palabraUsada = false;
-
-            //$nombreUsuario=solicitarUsuario();
-
-            // echo ("Bienvenido, ingrese su nombre: ");
-            // $nombreUsuario = trim(fgets(STDIN));
-            // $nonombreMinuscula($) ;
-
-
+            $nombreUsuario =nombreMinuscula();
             $cantPalabrasWordix = count($coleccionPalabras);
             $cantPartidas = count($coleccionPartidas);
             echo "Ingrese el número de la palabra con la que desea jugar: ";
@@ -76,16 +69,13 @@ do {
             $partida = jugarWordix($palabraElegida, $nombreUsuario);
             $coleccionPartidas[]= $partida;
             break;
-
         case 2:
             echo "Ingrese por favor su nombre:";
-            $nombreUsuario = trim(fgets(STDIN));
+            $nombreUsuario =nombreMinuscula();
             $partida = jugarConPalabraAleatoria($coleccionPalabras,$coleccionPartidas,$nombreUsuario);
             $coleccionPartidas[] = $partida;
             break;
-
         case 3:
-
             echo "Ingrese el número de partida que desea ver: " ;
             $numPartida = trim(fgets(STDIN)) ;
             $numPartida = $numPartida - 1 ;  //convierte el numero en un indice del array $coleccionPartidas 
@@ -103,6 +93,7 @@ do {
             break;
 
         case 5:
+            $nombreUsuario =nombreMinuscula();
             $estadisticas = estadisticasJugador($coleccionPartidas);
             msjEstadisticasJugador($estadisticas);
             break;
