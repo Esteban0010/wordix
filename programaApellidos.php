@@ -26,9 +26,12 @@ include_once("esteban.php");
 /**************************************/
 
 //Declaración de variables:
-//boolean $finPartida, 
-//int 
-//float 
+
+//  BOOLEAN $finPartida, $palabraUsada, 
+//  INT $opcion, $cantPalabrasWordix, $cantPartidas, $numero, $indiceElegido, $numPartida, $indicePartida
+//  STRING $nombreUsuario, 
+//  FLOAT 
+
 
 //Inicialización de variables:
 $finPartida = false;
@@ -86,8 +89,7 @@ do {
             echo "Ingrese el número de partida que desea ver: " ;
             $numPartida = trim(fgets(STDIN)) ;
             $numPartida = $numPartida - 1 ;  //convierte el numero en un indice del array $coleccionPartidas 
-            $verPartida = mostrarPartida($numPartida, $coleccionPartidas) ;
-            echo ($verPartida) ;
+            mostrarPartida($numPartida, $coleccionPartidas) ;
             
             break;
 
@@ -101,7 +103,7 @@ do {
             break;
 
         case 5:
-             $estadisticas = estadisticasJugador($coleccionPartidas);
+            $estadisticas = estadisticasJugador($coleccionPartidas);
             msjEstadisticasJugador($estadisticas);
             break;
 
@@ -112,7 +114,7 @@ do {
 
         case 7:
             $palabra = leerPalabra5Letras();
-            $coleccionPalabras = agregarPalabra($coleccionPalabras,$palabra);
+            $coleccionPalabras = agregarPalabra($coleccionPalabras, $palabra);
             break;
 
         case 8:
