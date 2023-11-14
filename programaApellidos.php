@@ -94,7 +94,8 @@ do {
             break;
 
         case 5:
-
+             $estadisticas = estadisticasJugador($coleccionPartidas);
+            msjEstadisticasJugador($estadisticas);
             break;
 
         case 6:
