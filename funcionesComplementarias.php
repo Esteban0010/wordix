@@ -306,4 +306,4 @@ function mostrarPartidasOrdenadas($coleccionPartidas)
     $partidasOrdenadas = ordenaalfabeticamentePalabra($coleccionPartidas);
     print_r($partidasOrdenadas);
 }
-/******************************************************************** Funcion Optcio 4*/
+/******************************************************************** Funcion Opcion 4*/

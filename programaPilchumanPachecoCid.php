@@ -13,11 +13,10 @@ include_once("esteban.php");
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Apellido,  Nombre.   | Legajo. | Carrera. |   mail.                       |   Usuario Github     */
-/* Pilchuman  Esteban.  |  5052   |  TUDW    | estebanpilchuman02@gmail.com  |   Esteban0010        */
-/* Cid        Guadalupe |  5028   |  TUDW    | cidguada4@gmail.com           |   guadacid4          */
-/* Pacheco    Leonardo  |         |  TUDW    |                               |   pachecoleoo        */
-/* ****COMPLETAR***** */
+/* Apellido,  Nombre.   | Legajo. | Carrera. |   mail.                             | Usuario Github     */
+/* Pilchuman  Esteban.  |  5052   |  TUDW    | estebanpilchuman02@gmail.com        | Esteban0010         */
+/* Cid        Guadalupe |  5028   |  TUDW    | cidguada4@gmail.com                 | guadacid4           */
+/* Pacheco    Leonardo  |   5050  |  TUDW    | leonardoandrespacheco1998@gmail.com | pachecoleoo         */
 
 
 
