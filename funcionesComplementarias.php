@@ -229,6 +229,7 @@ function mostrarPartidasOrdenadas($coleccionPartidas)
     print_r($partidasOrdenadas);
 }
 
+/**********************************************************************************FUNCION EXTRA*/
 
 /**
 * verifica si la palabra ya fue utilizada
@@ -253,7 +254,7 @@ function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPal
     return $palabraUsada;
 }
 
-/****************************************************************************** */
+/**********************************************************************************FUNCION EXTRA*/
 
 function solicitarIndicePartida($coleccionPartidas) 
 {
@@ -266,10 +267,7 @@ function solicitarIndicePartida($coleccionPartidas)
     return ($indicePartida) ;
 }
 
-/****************************************************************************** */
-
-
-/******************************************************************************* */
+/**********************************************************************************FUNCION EXTRA*/
 
 /**
  * Me permite jugar Wordix, con un palabra al azar
@@ -290,15 +288,7 @@ function jugarConPalabraAleatoria($coleccionPalabras, $coleccionPartidas, $nombr
     return ($partida);
 }
 
-
-
-
-
-/************************************************************************************ */
-
-
-
-/*********************************************************************************** */
+/**********************************************************************************FUNCION EXTRA*/
 
 /**
  * solicita al usuario el numero de la palabra con la que desea jugar y retorna la misma
@@ -328,9 +318,7 @@ function jugarWordixConPalabraElegida($coleccionPalabras, $coleccionPartidas, $n
     return ($palabraElegida) ;
 }
 
-
-
-
+/**********************************************************************************FUNCION EXTRA*/
 
 /**
  * verifica si un numbre de usuario se encuentra en el array $coleccionPartidas
