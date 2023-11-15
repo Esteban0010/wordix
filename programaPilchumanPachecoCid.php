@@ -65,7 +65,8 @@ do {
         case 3:
 
             $indicePartida=solicitarIndicePartida($coleccionPartidas) ;
-            mostrarPartida($indicePartida, $coleccionPartidas) ;
+            $verPartida = mostrarPartida($indicePartida, $coleccionPartidas) ;
+            echo $verPartida;
             
             break;
         case 4:
@@ -96,9 +97,10 @@ do {
 
             break;
         case 8:
-
-            $finPartida = true;
             
+            $finPartida = true;
+            echo "Gracias por jugar Wordix, vuelva pronto!";
+
             break;
         default:
             echo ("\033[91mDebe ingresar un numero de opcion valido... \033[0m");
