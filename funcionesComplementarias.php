@@ -29,33 +29,45 @@ function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPal
 
 /****************************************************************************** */
 
+function solicitarIndicePartida($coleccionPartidas) 
+{
+    //
+    $cantidadPartidas = count($coleccionPartidas);
+    echo "Ingrese el número de partida que desea ver: " ;
+    $indicePartida = solicitarNumeroEntre(1, $cantidadPartidas) ;
+    $indicePartida = $indicePartida -1;
+
+    return ($indicePartida) ;
+}
+
+/****************************************************************************** */
+
 /**
  * muestra los datos de una partida jugada 
  * @param array
  */
-function mostrarPartida($coleccionPartidas) /*antes de invocar la funcion asegurarse que el numero elegido 
+function mostrarPartida($indicePartida, $coleccionPartidas) /*antes de invocar la funcion asegurarse que el numero elegido 
 por el usuario (ej: partida n°6) coincida con el número de indice 
 de la palabra (ej: $indicePartida=5)*/
 {
     //int $auxiliarIndicePartida, $puntaje
     //string $msjIntento
-    $cantidadPartidas = count($coleccionPartidas);
-    echo "Ingrese el número de partida que desea ver: " ;
-    $indicePartida = solicitarNumeroEntre(1, $cantidadPartidas) ;
 
-    $auxiliarIndicePartida = $indicePartida ;
-    $indicePartida = $indicePartida -1;
+    $auxiliarIndicePartida = $indicePartida + 1;
+    $palabra = $coleccionPartidas[$indicePartida]["palabraWordix"];
+    $jugador = $coleccionPartidas[$indicePartida]["jugador"];
     $puntaje = $coleccionPartidas[$indicePartida]["puntaje"];
+    $intentos = $coleccionPartidas[$indicePartida]["intentos"];
 
     if ($puntaje == 0) {
         $msjIntento = "No adivinó la palabra\n";
     } else {
-        $msjIntento = "Adivinó la palabra en " . $coleccionPartidas[$indicePartida]["intentos"] . " intentos\n";
+        $msjIntento = "Adivinó la palabra en " . $intentos . " intentos\n";
     }
 
     echo "******************************************\n";
-    echo "Partida WORDIX " . $auxiliarIndicePartida . ": palabra " . $coleccionPartidas[$indicePartida]["palabraWordix"] . "\n";
-    echo "Jugador: " . $coleccionPartidas[$indicePartida]["jugador"] . "\n";
+    echo "Partida WORDIX " . $auxiliarIndicePartida . ": palabra " . $palabra . "\n";
+    echo "Jugador: " . $jugador . "\n";
     echo "Puntaje: " . $puntaje . " puntos\n";
     echo "Intento: " . $msjIntento;
     echo "******************************************\n";
@@ -90,8 +102,10 @@ function jugarConPalabraAleatoria($coleccionPalabras, $coleccionPartidas, $nombr
  * @param string
  * @return int
  */
-function primeraPartidaGanada($partidasPredefinidas, $nombreUsuario)
+function IndicePrimeraPartidaGanada($partidasPredefinidas, $nombreUsuario)
 {
+    //int $indice
+
     $indice = 0;
     foreach ($partidasPredefinidas as $partida) {
         if ($nombreUsuario == $partida["jugador"] && $partida["puntaje"] > 0) {

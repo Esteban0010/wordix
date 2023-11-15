@@ -58,7 +58,6 @@ do {
             break;
         case 2:
 
-            echo "Ingrese por favor su nombre:";
             $nombreUsuario =solicitarJugador();
             $partida = jugarConPalabraAleatoria($coleccionPalabras,$coleccionPartidas,$nombreUsuario);
             $coleccionPartidas[] = $partida;
@@ -66,19 +65,17 @@ do {
             break;
         case 3:
 
-            
-            mostrarPartida($coleccionPartidas) ;
+            $indicePartida=solicitarIndicePartida($coleccionPartidas) ;
+            mostrarPartida($indicePartida, $coleccionPartidas) ;
             
             break;
         case 4:
 
             $nombreUsuario = solicitarJugador() ;
-            $indicePartida = primeraPartidaGanada($coleccionPartidas, $nombreUsuario) ;
-            $verPrimerPartidaGanada = $coleccionPalabras[$indicePartida] ;
-            echo ($verPrimerPartidaGanada) ;
+            $indicePartida = IndicePrimeraPartidaGanada($coleccionPartidas, $nombreUsuario) ;
+            mostrarPartida($indicePartida, $coleccionPartidas) ;
 
             break;
-
         case 5:
 
             $nombreUsuario =solicitarJugador();
