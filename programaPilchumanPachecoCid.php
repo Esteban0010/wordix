@@ -50,8 +50,8 @@ do {
     switch ($opcion) {
 
         case 1:
-
-            $palabraElegida=jugarWordixConPalabraElegida($coleccionPalabras ,$coleccionPartidas) ;
+            $nombreUsuario = solicitarJugador();
+            $palabraElegida=jugarWordixConPalabraElegida($coleccionPalabras ,$coleccionPartidas, $nombreUsuario) ;
             $partida = jugarWordix($palabraElegida, $nombreUsuario);
             $coleccionPartidas[]= $partida;
 
@@ -72,13 +72,14 @@ do {
         case 4:
 
             $nombreUsuario = solicitarJugador() ;
+            $nombreUsuario = verificarNombreUsuario($nombreUsuario, $coleccionPartidas) ;
             $indicePartida = IndicePrimeraPartidaGanada($coleccionPartidas, $nombreUsuario) ;
-            mostrarPartida($indicePartida, $coleccionPartidas) ;
+            $verPartida = mostrarPartida($indicePartida, $coleccionPartidas) ;
+            echo $verPartida;
 
             break;
         case 5:
 
-            $nombreUsuario =solicitarJugador();
             $estadisticas = estadisticasJugador($coleccionPartidas);
             msjEstadisticasJugador($estadisticas);
 

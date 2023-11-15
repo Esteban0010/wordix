@@ -52,6 +52,11 @@ de la palabra (ej: $indicePartida=5)*/
 {
     //int $auxiliarIndicePartida, $puntaje
     //string $msjIntento
+    
+    if ($indicePartida == -1) {
+        $mensaje=msjSinPartidasGanadas();
+        return $mensaje ;
+    }
 
     $auxiliarIndicePartida = $indicePartida + 1;
     $palabra = $coleccionPartidas[$indicePartida]["palabraWordix"];
@@ -146,7 +151,7 @@ function estadisticasJugador($coleccionPartidas)
     $contadorPartidas = 0;
     $acumuladorPuntaje = 0;
     $contadorVictorias = 0;
-    $porcentajeVictorias = 0;
+    //$porcentajeVictorias = 0;
     $jugadorEncontrado = false;
     $intento1 = 0;
     $intento2 = 0;
@@ -222,14 +227,13 @@ function estadisticasJugador($coleccionPartidas)
  * @param array
  * @return string
  */
-function jugarWordixConPalabraElegida($coleccionPalabras, $coleccionPartidas) 
+function jugarWordixConPalabraElegida($coleccionPalabras, $coleccionPartidas, $nombreUsuario) 
 {
     //boolean $palabarUsada
     //string $nombreUsuario, $palabraElegida
     //int $cantPalabrasWordix, $cantPartidas, $numero, $indiceElegido
 
     $palabraUsada = false;
-    $nombreUsuario = solicitarJugador();
     $cantPalabrasWordix = count($coleccionPalabras);
     $cantPartidas = count($coleccionPartidas);
     echo "Ingrese el número de la palabra con la que desea jugar: ";
@@ -331,7 +335,6 @@ function mostrarPartidasOrdenadas($coleccionPartidas)
 function solicitarJugador(){
     /*Inicialización*/
     echo "Ingrese por favor su nombre: \n";
-   
                 
     do {
         $nombreUsuario = trim(fgets(STDIN));
@@ -344,4 +347,29 @@ function solicitarJugador(){
     while ( !ctype_alpha($primeraLetra));
     $nombreUsuario = strtolower($nombreUsuario);
    return $nombreUsuario;
+}
+
+/**
+ * verifica si un numbre de usuario se encuentra en el array $coleccionPartidas
+ * @param string $nombreUsuario
+ * @param array $coleccionPartidas
+ * @return string
+ */
+function verificarNombreUsuario($nombreUsario, $coleccionPartidas)
+{
+    //boolean $usuarioEncontrado
+    $usuarioEncontrado=false ;
+    do {
+        foreach ($coleccionPartidas as $partida) {
+            if ($nombreUsario == $partida["jugador"]) {
+                $usuarioEncontrado=true ;
+            }
+        }
+        if (!$usuarioEncontrado) {
+            echo "Nombre de usuario no existente. Asegurese de escribirlo correctamente: \n" ;
+            $nombreUsario=trim(fgets(STDIN)) ;
+        }
+    } while (!$usuarioEncontrado) ;
+
+    return $nombreUsario ;
 }

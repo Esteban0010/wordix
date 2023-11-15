@@ -40,3 +40,8 @@ function msjEstadisticasJugador($Estadisticas){
    $msj = "**************************************************************\n   Jugador: $jugador             \n   Partidas: $contadorPartidas       \n   Puntaje Total: $acumuladorPuntaje       \n   Vistorias: $contadorVictorias       \n   Porcentaje Victorias: $porcentajeVictorias%      \n   Adivinadas:       \n   Partidas: $contadorPartidas       \n             Intento 1: $intento1       \n             Intento 2: $intento2       \n             Intento 3: $intento3       \n             Intento 4: $intento4       \n             Intento 5: $intento5       \n             Intento 6: $intento6       \n                          \n**************************************************************";
    echo $msj;
 }
+
+function msjSinPartidasGanadas() {
+    $mensaje = "******************************************\n No ganó ninguna partida. Seguí intentando! \n ******************************************" ;
+    return $mensaje;
+}
