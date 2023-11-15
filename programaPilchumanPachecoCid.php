@@ -49,15 +49,14 @@ do {
     switch ($opcion) {
 
         case 1:
-
-            $palabraElegida=jugarWordixConPalabraElegida($coleccionPalabras ,$coleccionPartidas) ;
+            $nombreUsuario = solicitarJugador();
+            $palabraElegida=jugarWordixConPalabraElegida($coleccionPalabras ,$coleccionPartidas, $nombreUsuario) ;
             $partida = jugarWordix($palabraElegida, $nombreUsuario);
             $coleccionPartidas[]= $partida;
 
             break;
         case 2:
 
-            echo "Ingrese por favor su nombre:";
             $nombreUsuario =solicitarJugador();
             $partida = jugarConPalabraAleatoria($coleccionPalabras,$coleccionPartidas,$nombreUsuario);
             $coleccionPartidas[] = $partida;
@@ -65,24 +64,21 @@ do {
             break;
         case 3:
 
-            echo "Ingrese el número de partida que desea ver: " ;
-            $numPartida = trim(fgets(STDIN)) ;
-            $numPartida = $numPartida - 1 ;  //convierte el numero en un indice del array $coleccionPartidas 
-            mostrarPartida($numPartida, $coleccionPartidas) ;
+            $indicePartida=solicitarIndicePartida($coleccionPartidas) ;
+            mostrarPartida($indicePartida, $coleccionPartidas) ;
             
             break;
         case 4:
 
             $nombreUsuario = solicitarJugador() ;
-            $indicePartida = primeraPartidaGanada($coleccionPartidas, $nombreUsuario) ;
-            $verPrimerPartidaGanada = $coleccionPalabras[$indicePartida] ;
-            echo ($verPrimerPartidaGanada) ;
+            $nombreUsuario = verificarNombreUsuario($nombreUsuario, $coleccionPartidas) ;
+            $indicePartida = IndicePrimeraPartidaGanada($coleccionPartidas, $nombreUsuario) ;
+            $verPartida = mostrarPartida($indicePartida, $coleccionPartidas) ;
+            echo $verPartida;
 
             break;
-
         case 5:
 
-            $nombreUsuario =solicitarJugador();
             $estadisticas = estadisticasJugador($coleccionPartidas);
             msjEstadisticasJugador($estadisticas);
 

@@ -14,7 +14,12 @@ function msjPartida($numPartida,$palabra,$jugador,$puntaje,$intentosMsj){
    return $partidaMsj;
 }
 
-function msjPrimeraGanada($numPartida,$palabra,$jugador,$puntaje,$intentosMsj){
+function msjPrimeraGanada($indicePartida,$partida){
+    $numPartida =$indicePartida;
+    $palabra = $partida["palabraWordix"];
+    $jugador =$partida["jugador"];
+    $puntaje=$partida["puntaje"];
+    $intentosMsj=$partida["intentos"];
     $msj = "**************************************************************\n   Partida WORDIX $numPartida: palabra $palabra        \n   Jugador: $jugador             \n   Puntaje: $puntaje puntos      \n   Intento: $intentosMsj                           \n**************************************************************";
     return $msj;
 }
@@ -34,4 +39,9 @@ function msjEstadisticasJugador($Estadisticas){
     $porcentajeVictorias = ($contadorVictorias * 100) / $contadorPartidas;
    $msj = "**************************************************************\n   Jugador: $jugador             \n   Partidas: $contadorPartidas       \n   Puntaje Total: $acumuladorPuntaje       \n   Vistorias: $contadorVictorias       \n   Porcentaje Victorias: $porcentajeVictorias%      \n   Adivinadas:       \n   Partidas: $contadorPartidas       \n             Intento 1: $intento1       \n             Intento 2: $intento2       \n             Intento 3: $intento3       \n             Intento 4: $intento4       \n             Intento 5: $intento5       \n             Intento 6: $intento6       \n                          \n**************************************************************";
    echo $msj;
+}
+
+function msjSinPartidasGanadas() {
+    $mensaje = "******************************************\n No ganó ninguna partida. Seguí intentando! \n ******************************************" ;
+    return $mensaje;
 }
