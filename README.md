@@ -57,7 +57,6 @@ Opción 7: "Agregar una palabra de 5 letras a Wordix", en esta opción se le dar
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [PHP (Hypertext Preprocessor)](https://www.php.net/downloads.php) - Lenguaje de programación
 * [VSC](https://code.visualstudio.com/download) - Editor de código fuente
