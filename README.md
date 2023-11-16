@@ -1,3 +1,4 @@
+
 # Wordix                                                                                         <img src="https://www.gifss.com/letras/a7.gif" height="50" width="60"/>
 Trabajo Práctico final Introducción a la Programación.   
 
@@ -69,3 +70,5 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 
 ## Gratitud 🎁
 Gracias al grupo de catedra de Introducción a la Programación por su invaluable orientación técnica. Su dedicación ha sido fundamental para comprender los conceptos esenciales y desarrollar habilidades sólidas en programación. Aprecio sinceramente su compromiso con nuestra formación académica.
+
+
