@@ -1,6 +1,6 @@
 # Wordix
 Trabajo Práctico final Introducción a la Programación.
-<img src="[https://mott.pe/uploads/images/2014/12/22/compu01.gif](https://play-lh.googleusercontent.com/44uD9_jogVlLP3rR6IQJa_ZPz9EB_0huxh9qHWedG_HrYdWVBK0ssb94M1QDr-hq_fo)" height="200" width="600"/>
+<img src="https://www.gifss.com/letras/a7.gif" height="200" width="600"/>
 
 Bienvenidos a Wordix, Wordix es un juego tipo arcade. El archivo se inicializa con "programaPichulmanPachecoCid.php", una vez abierto el usuario debería adivinar una palabras de tan solo cinco letras, y a su vez le dará señales de cuan cerca o lejos esta de adivinarla, por ejemplo en amarillo indicará que la letra existe pero que no esta en el lugar correcto, en verde que la letra y lugar es correcta, y en rojo que ni la letra ni posición son correctas.
 
