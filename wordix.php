@@ -28,7 +28,8 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 
 /**
  * retorna un número válido dentro de un rango de valores
- * @param int
+ * @param int $min 
+ * @param int $max
  * @return int
  */
 function solicitarNumeroEntre($min, $max)
@@ -52,7 +53,7 @@ function solicitarNumeroEntre($min, $max)
 
 /**
  * Escrbir un texto en color ROJO
- * @param string $texto)
+ * @param string $texto
  */
 function escribirRojo($texto)
 {
@@ -334,8 +335,8 @@ function esIntentoGanado($estructuraPalabraIntento)
 
 /**
  * calcula el puntaje de una partida wordix
- * @param string
- * @param int
+ * @param string $palabraWordix
+ * @param int $nroIntento
  * @return int
  */
 function obtenerPuntajeWordix($palabraWordix, $nroIntento)
@@ -388,6 +389,10 @@ function obtenerPuntajeWordix($palabraWordix, $nroIntento)
 function jugarWordix($palabraWordix, $nombreUsuario)
 {
     /*Inicialización*/
+    // ARRAY $arregloDeIntentosWordix, $teclado, $partida
+    // INT $nroIntento, $indiceIntento, $puntaje
+    // STRING $palabraIntento
+    // BOOL $ganoElIntento
     $arregloDeIntentosWordix = [];
     $teclado = iniciarTeclado();
     escribirMensajeBienvenida($nombreUsuario);

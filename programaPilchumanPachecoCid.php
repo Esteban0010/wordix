@@ -26,9 +26,10 @@ include_once("esteban.php");
 
 //Declaración de variables:
 
-//  BOO
-//  STRING
-//  FLOAT 
+//  BOOLEAN $finPartida 
+//  STRING $nombreUsuario, $palabraElegida, $verPartida, $palabra
+// INT $opcion, $indicePartida
+// ARRAY $coleccionPalabras $coleccionPartidas, $partida, $estadisticas, $partidasOrdenadas
 
 
 //Inicialización de variables:
