@@ -8,26 +8,25 @@ include_once("funcionesComplementarias.php");
 include_once("esteban.php");
 
 
-
 /**************************************/
 /***** DATOS DE LOS INTEGRANTES *******/
 /**************************************/
 
-/* Apellido,  Nombre.   | Legajo. | Carrera. |   mail.                             | Usuario Github     */
+/* Apellido,  Nombre.   | Legajo. | Carrera. |   mail.                             | Usuario Github      */
 /* Pilchuman  Esteban.  |  5052   |  TUDW    | estebanpilchuman02@gmail.com        | Esteban0010         */
 /* Cid        Guadalupe |  5028   |  TUDW    | cidguada4@gmail.com                 | guadacid4           */
-/* Pacheco    Leonardo  |   5050  |  TUDW    | leonardoandrespacheco1998@gmail.com | pachecoleoo         */
+/* Pacheco    Leonardo  |  5050   |  TUDW    | leonardoandrespacheco1998@gmail.com | pachecoleoo         */
 
 
 
-/**************************************/
-/*********** PROGRAMA PRINCIPAL *******/
-/**************************************/
+/*****************************************/
+/*********** PROGRAMA PRINCIPAL **********/
+/*****************************************/
 
 //Declaración de variables:
 
-//  BOOLEAN $finPartida 
-//  STRING $nombreUsuario, $palabraElegida, $verPartida, $palabra
+// BOOLEAN $finPartida 
+// STRING $nombreUsuario, $palabraElegida, $verPartida, $palabra
 // INT $opcion, $indicePartida
 // ARRAY $coleccionPalabras $coleccionPartidas, $partida, $estadisticas, $partidasOrdenadas
 
@@ -46,36 +45,36 @@ do {
     echo ("Ingrese una opcion: ");
     $opcion = solicitarNumeroEntre(1, 8);
 
-
     switch ($opcion) {
 
         case 1:
+
             $nombreUsuario = solicitarJugador();
-            $palabraElegida=jugarWordixConPalabraElegida($coleccionPalabras ,$coleccionPartidas, $nombreUsuario) ;
+            $palabraElegida = jugarWordixConPalabraElegida($coleccionPalabras ,$coleccionPartidas, $nombreUsuario) ;
             $partida = jugarWordix($palabraElegida, $nombreUsuario);
-            $coleccionPartidas[]= $partida;
+            $coleccionPartidas[] = $partida;
 
             break;
         case 2:
 
-            $nombreUsuario =solicitarJugador();
+            $nombreUsuario = solicitarJugador();
             $partida = jugarConPalabraAleatoria($coleccionPalabras,$coleccionPartidas,$nombreUsuario);
             $coleccionPartidas[] = $partida;
 
             break;
         case 3:
 
-            $indicePartida=solicitarIndicePartida($coleccionPartidas) ;
-            $verPartida = mostrarPartida($indicePartida, $coleccionPartidas) ;
+            $indicePartida = solicitarIndicePartida($coleccionPartidas);
+            $verPartida = mostrarPartida($indicePartida, $coleccionPartidas);
             echo $verPartida;
             
             break;
         case 4:
 
-            $nombreUsuario = solicitarJugador() ;
-            $nombreUsuario = verificarNombreUsuario($nombreUsuario, $coleccionPartidas) ;
-            $indicePartida = IndicePrimeraPartidaGanada($coleccionPartidas, $nombreUsuario) ;
-            $verPartida = mostrarPartida($indicePartida, $coleccionPartidas) ;
+            $nombreUsuario = solicitarJugador();
+            $nombreUsuario = verificarNombreUsuario($nombreUsuario, $coleccionPartidas);
+            $indicePartida = IndicePrimeraPartidaGanada($coleccionPartidas, $nombreUsuario);
+            $verPartida = mostrarPartida($indicePartida, $coleccionPartidas);
             echo $verPartida;
 
             break;

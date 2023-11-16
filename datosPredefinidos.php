@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Obtiene una colección de partidas
  * @return array
@@ -23,6 +22,7 @@ function cargarPartidasPredefinidas()
 
     return ($coleccionPartidas);
 }
+
 /*******************************************************/
 
 /**
@@ -42,5 +42,3 @@ function cargarColeccionPalabras()
 
     return ($coleccionPalabras);
 }
-
-/*******************************************************/

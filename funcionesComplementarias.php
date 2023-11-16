@@ -5,8 +5,10 @@ include_once("datosPredefinidos.php");
 /**********************************************************************************FUNCION 6*/
 
 /**
- * muestra los datos de una partida jugada 
- * @param array
+ * muestra los datos de una partida jugada
+ * @param int $indicePartida 
+ * @param array $coleccionPartidas
+ * @return string $mensaje
  */
 function mostrarPartida($indicePartida, $coleccionPartidas) /*antes de invocar la funcion asegurarse que el numero elegido 
 por el usuario (ej: partida n°6) coincida con el número de indice 
@@ -15,7 +17,7 @@ de la palabra (ej: $indicePartida=5)*/
     //int $auxiliarIndicePartida, $puntaje
     //string $msjIntento
 
-    if ($indicePartida == -1) {
+    if ($indicePartida == -1) {  //solo útil cuando se ejecuta la opcion 4 del menú de opciones
         $mensaje = msjSinPartidasGanadas();
         return $mensaje;
     }
@@ -33,11 +35,11 @@ de la palabra (ej: $indicePartida=5)*/
     }
 
     $mensaje =  "**************************************************************\n   
-    Partida WORDIX $auxiliarIndicePartida: palabra $palabra        \n   
-    Jugador: $jugador             \n   
-    Puntaje: $puntaje puntos      \n   
-    Intento: $msjIntento                           \n
-    **************************************************************";
+    Partida WORDIX $auxiliarIndicePartida: palabra $palabra \n          
+    Jugador: $jugador \n               
+    Puntaje: $puntaje puntos \n        
+    Intento: $msjIntento
+    \n**************************************************************";
 
     return $mensaje;
 }
@@ -48,6 +50,7 @@ de la palabra (ej: $indicePartida=5)*/
  * agrega una palabra (elemento) a un array
  * @param array $coleccionPalabras
  * @param string $palabra 
+ * @return array $coleccionPalabras
  */
 function agregarPalabra($coleccionPalabras, $palabra)
 {
@@ -58,7 +61,8 @@ function agregarPalabra($coleccionPalabras, $palabra)
 /**********************************************************************************FUNCION 8*/
 
 /**
- * Busca la primera partida ganada de un usuario, y devuelve un mensaje.
+ * Busca la primera partida ganada de un usuario y devuelve el indice de la partida. 
+ * De no haber ganado ninguna, devuelve el valor -1
  * @param array $partidasPredefinidas
  * @param string $nombreUsuario 
  * @return int
@@ -85,7 +89,8 @@ function IndicePrimeraPartidaGanada($partidasPredefinidas, $nombreUsuario)
  */
 function estadisticasJugador($coleccionPartidas)
 {
-    // int $contadorPartidas, $acumuladorPuntaje, $contadorVictorias, $intento, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6
+    // int $contadorPartidas, $acumuladorPuntaje, $contadorVictorias, 
+    // int $intento, $intento1, $intento2, $intento3, $intento4, $intento5, $intento6
     // string $jugador 
     // boolean $jugadorEncontrado
     // array $arrayEstadisticas 
@@ -105,7 +110,8 @@ function estadisticasJugador($coleccionPartidas)
         $jugador = trim(fgets(STDIN));
 
         foreach ($coleccionPartidas as $partida) {
-            if ($jugador == $partida["jugador"]) {
+            if ($jugador == $partida["jugador"]) 
+            {
                 $intento = $partida["intentos"];
                 $jugadorEncontrado = true;
                 $contadorPartidas = $contadorPartidas + 1;
@@ -138,7 +144,7 @@ function estadisticasJugador($coleccionPartidas)
         }
 
         if (!$jugadorEncontrado) {
-            echo ("jugador no encontrado, intente nuevamente: ");
+            echo ("Jugador no encontrado, intente nuevamente: ");
         }
     } while (!$jugadorEncontrado);
     $arrayEstadisticas = array(
@@ -159,28 +165,33 @@ function estadisticasJugador($coleccionPartidas)
 /**********************************************************************************FUNCION 10*/
 
 /**
- * @return string 
+ * Pide al usuario su nombre de jugador. A su vez valida que 
+ * comienze con una letra y lo convierte en minúsculas
+ * @return string $nombreUsuario
  */
 function solicitarJugador()
 {
     //string $nombreUsuario, $primeraLetra
+
     echo "Ingrese por favor su nombre: \n";
     do {
         $nombreUsuario = trim(fgets(STDIN));
+
         // Verificar si el nombre tiene solo letras
         $primeraLetra = $nombreUsuario[0];
         if (!ctype_alpha($primeraLetra)) {
-            echo "Su nombre debe comenzar con una letra, ingrese un nombre valido: \n";
+            echo "Su nombre debe comenzar con una letra, ingrese un nombre válido: \n";
         }
     } while (!ctype_alpha($primeraLetra));
-    $nombreUsuario = strtolower($nombreUsuario);
+
+    $nombreUsuario = strtolower($nombreUsuario); //lo convierte en minúsculas 
     return $nombreUsuario;
 }
 
 /**********************************************************************************FUNCION 11 PARTE 1*/
 
 /** 
- * Compara entre sus dos parametro y retorna un numero dependiendo la condicion cumplida
+ * Compara entre sus dos parametros y retorna un numero dependiendo la condicion cumplida
  * @param array $partida
  * @param array $partidaComparacion
  * @return int
@@ -221,7 +232,7 @@ function ordenaalfabeticamentePalabra($coleccionPartidas)
 /**********************************************************************************FUNCION 11 PARTE 3 (y ultima)*/
 
 /**
- * Me ordena las partidas alabeticamente por nombre y palabras jugadas, luego imprime por pantalla.
+ * Ordena las partidas alabeticamente por nombre y palabras jugadas, luego imprime por pantalla.
  * @param array $coleccionPartidas
  */
 function mostrarPartidasOrdenadas($coleccionPartidas)
@@ -247,7 +258,8 @@ function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPal
     //int $cantPartidas, $i
     $palabraUsada = false;
     $cantPartidas = count($coleccionPartidas);
-    for ($i = 0; $i < $cantPartidas; $i++) {
+    for ($i = 0; $i < $cantPartidas; $i++) 
+    {
         if ($nombreUsuario == $coleccionPartidas[$i]["jugador"]) {
             if ($coleccionPalabras[$indicePalabra] == $coleccionPartidas[$i]["palabraWordix"]) {
                 $palabraUsada = true;
@@ -258,9 +270,11 @@ function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPal
 }
 
 /**********************************************************************************FUNCION EXTRA*/
+
 /**
+ * Solicita al usuario un indice de partida
  * @param array $coleccionPartidas 
- * @return int 
+ * @return int $indicePartida
  */
 function solicitarIndicePartida($coleccionPartidas)
 {
@@ -268,15 +282,15 @@ function solicitarIndicePartida($coleccionPartidas)
     $cantidadPartidas = count($coleccionPartidas);
     echo "Ingrese el número de partida que desea ver: ";
     $indicePartida = solicitarNumeroEntre(1, $cantidadPartidas);
-    $indicePartida = $indicePartida - 1;
+    $indicePartida = $indicePartida - 1;  // convierte al número de partida en el indice correspondinete del array
 
-    return ($indicePartida);
+    return $indicePartida;
 }
 
 /**********************************************************************************FUNCION EXTRA*/
 
 /**
- * Me permite jugar Wordix, con un palabra al azar
+ * Me permite jugar Wordix con un palabra al azar
  * @param array $coleccionPalabras
  * @param array $coleccionPartidas
  * @param string $nombreUsario 
@@ -287,6 +301,7 @@ function jugarConPalabraAleatoria($coleccionPalabras, $coleccionPartidas, $nombr
     //array $partida 
     //int $numeroDePalabra, $cantidadPalabras 
     //boolean $palabraUsada
+
     $palabraUsada = false;
     $cantidadPalabras = count($coleccionPalabras);
     do {
@@ -321,7 +336,7 @@ function jugarWordixConPalabraElegida($coleccionPalabras, $coleccionPartidas, $n
         $palabraElegida = $coleccionPalabras[$indiceElegido];
         $palabraUsada = verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPalabras, $indiceElegido);
         if ($palabraUsada) {
-            echo "Debe ingresar un numero de palabra que no hayas utilizado: ";
+            echo "Debe ingresar un número de palabra que no haya utilizado: ";
         }
     } while ($palabraUsada);
 
