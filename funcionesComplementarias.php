@@ -54,7 +54,22 @@ de la palabra (ej: $indicePartida=5)*/
  */
 function agregarPalabra($coleccionPalabras, $palabra)
 {
-    $coleccionPalabras[] = $palabra;
+    $palabraEncontrada= false;
+    $contador= 0;
+    $cantidadPalabras = count($coleccionPalabras);
+    while($cantidadPalabras > $contador && !$palabraEncontrada ){
+       
+      if( $coleccionPalabras[$contador] == $palabra){
+        $palabraEncontrada = true;
+      }
+      $contador= $contador +1;
+    }
+    if(!$palabraEncontrada){
+        $coleccionPalabras[]= $palabra;
+    }else{
+        echo"La palabra ya se encuntra almacenada";
+    }
+    
     return $coleccionPalabras;
 }
 
@@ -71,13 +86,19 @@ function IndicePrimeraPartidaGanada($partidasPredefinidas, $nombreUsuario)
 {
     //int $indice
     $indice = 0;
-    foreach ($partidasPredefinidas as $partida) {
-        if ($nombreUsuario == $partida["jugador"] && $partida["puntaje"] > 0) {
-            return $indice;
+    $partidaGanada = false ;
+    $cantPartidas = count($partidasPredefinidas);
+    while($indice < $cantPartidas && !$partidaGanada){
+        if ($nombreUsuario == $partidasPredefinidas[$indice]["jugador"] && $partidasPredefinidas[$indice]["puntaje"] > 0) {
+           $partidaGanada = true ;
+        } else {
+            $indice = $indice + 1;
         }
-        $indice = $indice + 1;
     }
-    return -1;
+    if (!$partidaGanada) {
+        $indice = -1 ;
+    }
+    return $indice;
 }
 
 /**********************************************************************************FUNCION 9*/
@@ -200,7 +221,7 @@ function comparPartidas($partida, $partidaComparacion)
 {
     // int $orden
     $orden = 0;
-    if (ord($partida["jugador"]) > ord($partidaComparacion["jugador"])) {
+    if (($partida["jugador"]) > ($partidaComparacion["jugador"])) {
         $orden = 1;
     } elseif ($partida["jugador"] == $partidaComparacion["jugador"]) {
 
@@ -209,7 +230,7 @@ function comparPartidas($partida, $partidaComparacion)
         } else {
             $orden = 1;
         }
-    } elseif (ord($partida["jugador"]) < ord($partidaComparacion["jugador"])) {
+    } elseif (($partida["jugador"]) < ($partidaComparacion["jugador"])) {
         $orden = -1;
     }
     return $orden;
@@ -224,7 +245,6 @@ function comparPartidas($partida, $partidaComparacion)
  */
 function ordenaalfabeticamentePalabra($coleccionPartidas)
 {
-    uasort($coleccionPartidas, "comparPartidas");
     uasort($coleccionPartidas, "comparPartidas");
     return ($coleccionPartidas);
 }
@@ -257,14 +277,15 @@ function verificarPalabraUsada($nombreUsuario, $coleccionPartidas, $coleccionPal
     //boolean $palabraUsada 
     //int $cantPartidas, $i
     $palabraUsada = false;
+    $contador = 0 ;
     $cantPartidas = count($coleccionPartidas);
-    for ($i = 0; $i < $cantPartidas; $i++) 
-    {
-        if ($nombreUsuario == $coleccionPartidas[$i]["jugador"]) {
-            if ($coleccionPalabras[$indicePalabra] == $coleccionPartidas[$i]["palabraWordix"]) {
+    while ($contador<$cantPartidas && !$palabraUsada ){
+        if ($nombreUsuario == $coleccionPartidas[$contador]["jugador"]) {
+            if ($coleccionPalabras[$indicePalabra] == $coleccionPartidas[$contador]["palabraWordix"]) {
                 $palabraUsada = true;
             }
         }
+        $contador = $contador + 1 ;
     }
     return $palabraUsada;
 }

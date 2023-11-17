@@ -94,7 +94,7 @@ do {
 
             $palabra = leerPalabra5Letras();
             $coleccionPalabras = agregarPalabra($coleccionPalabras, $palabra);
-
+            echo "Su palabra ah sido agregada";
             break;
         case 8:
             
